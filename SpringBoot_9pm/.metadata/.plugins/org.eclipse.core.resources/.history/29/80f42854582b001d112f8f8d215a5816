@@ -1,0 +1,48 @@
+package com.gl.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.gl.entity.Subject;
+import com.gl.repository.SubjectRepository;
+
+@Service
+public class SubjectService {
+	
+	@Autowired
+	private SubjectRepository srepo;
+
+	public List<Subject> getAllSubject()
+	{
+		List<Subject> subject = new ArrayList<>();
+		srepo.findAll().forEach(subject:: add);
+		
+		 return subject;
+	}
+	public Subject addSubject(Subject s1)
+	{
+		
+		return srepo.save(s1);
+		
+	}
+	public void updateSubject(int id, Subject s2)
+	{
+		//save method is used for insert and add project
+		srepo.save(s2);
+		
+		
+	}
+	public void deleteSubject(int id)
+	{
+	 srepo.deleteById(id);
+	}
+
+	
+	
+
+}

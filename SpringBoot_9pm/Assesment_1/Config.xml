@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="htttp://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd" >
+        
+          <bean class ="org.springframework.jdbc.datasource.DriverManagerDataSource"
+       name ="ds">
+       <property name ="driverClassName"
+       		value="com.mysql.jdbc.Driver">
+       		
+       </property>
+       <property name="url"
+       		value ="jdbc:mysql://localhost:3306/books"/>
+       		<property name ="username" value ="root"/>
+       		
+       		<property name ="password" value ="SrashtiGupta@10">
+       		</property>
+       </bean> 
+       <bean class="org.springfrmework.jdbc.core.JdbcTemplate"
+       		name ="jdbcType" p:datasource-ref="ds"/>
+       		<bean class="com.greatlearning.Spring_Assesment.UserDao.Impl" name="userdao">
+       		<property name="jdbcType" ref="jdbcType"/>
+       		
+       		</bean>
+       		</beans>
